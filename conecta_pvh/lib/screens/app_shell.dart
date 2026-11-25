@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/cores.dart';
+import '../data/oportunidades_fixas.dart'; 
 import '../models/configuracoes_acessibilidade.dart';
 import '../models/oportunidade.dart';
 import 'explorar_page.dart';
@@ -21,8 +22,6 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  // Índices reais das páginas no IndexedStack:
-  // 0: Início | 1: Explorar | 2: Publicar | 3: Salvos | 4: Perfil
   int _paginaAtual = 0;
   String _termoBusca = '';
   String _categoriaSelecionada = 'Todas';
@@ -32,7 +31,9 @@ class _AppShellState extends State<AppShell> {
   @override
   void initState() {
     super.initState();
-    _oportunidades = List<Oportunidade>.from(widget.oportunidadesIniciais);
+    _oportunidades = widget.oportunidadesIniciais.isNotEmpty
+        ? List<Oportunidade>.from(widget.oportunidadesIniciais)
+        : List<Oportunidade>.from(oportunidades_fixas);
   }
 
   List<Oportunidade> get _oportunidadesFiltradas {
@@ -230,7 +231,7 @@ class _AppShellState extends State<AppShell> {
       1 => 2,
       2 => 3,
       3 => 4,
-      4 => 5,
+      4 => 0,
       _ => 0,
     };
 
@@ -245,6 +246,8 @@ class _AppShellState extends State<AppShell> {
         aoAlternarSalvo: _alternarSalvo,
         aoAbrirDetalhes: _abrirDetalhes,
         aoIrParaPublicar: () => setState(() => _paginaAtual = 2),
+        aoIrParaPerfil: () => setState(() => _paginaAtual = 4),
+        perfilAtivo: _paginaAtual == 4,
       ),
       ExplorarPage(
         termoBusca: _termoBusca,
@@ -334,7 +337,6 @@ class _AppShellState extends State<AppShell> {
                 2 => 1,
                 3 => 2,
                 4 => 3,
-                5 => 4,
                 _ => 0,
               };
             });
@@ -348,7 +350,6 @@ class _AppShellState extends State<AppShell> {
             NavigationDestination(
               icon: Icon(
                 Icons.sign_language_rounded,
-                color: modoEscuro ? lima : floresta,
               ),
               selectedIcon: const Icon(
                 Icons.sign_language_rounded,
@@ -370,11 +371,6 @@ class _AppShellState extends State<AppShell> {
               icon: Icon(Icons.bookmark_outline),
               selectedIcon: Icon(Icons.bookmark_rounded),
               label: 'Salvos',
-            ),
-            const NavigationDestination(
-              icon: Icon(Icons.person_outline),
-              selectedIcon: Icon(Icons.person_rounded),
-              label: 'Perfil',
             ),
           ],
         ),

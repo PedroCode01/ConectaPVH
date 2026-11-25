@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../constants/cores.dart';
 import '../models/oportunidade.dart';

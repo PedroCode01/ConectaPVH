@@ -62,13 +62,13 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                     child: Image.asset(
                       'assets/images/logo_conectapvh.png',
-                      width: 48,
-                      height: 48,
+                      width: 50,
+                      height: 50,
                       fit: BoxFit.cover,
                       semanticLabel: 'Logo ConectaPVH',
                       errorBuilder: (_, __, ___) => Container(
-                        width: 48,
-                        height: 48,
+                        width: 50,
+                        height: 50,
                         decoration: BoxDecoration(
                           color: floresta,
                           borderRadius: BorderRadius.circular(14),
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     tooltip: 'Acessibilidade',
-                    iconSize: 28,
+                    iconSize: 40,
                     style: IconButton.styleFrom(
                       minimumSize: const Size(52, 52),
                       padding: const EdgeInsets.all(12),
@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(width: 4),
                   IconButton(
                     tooltip: 'Notificações',
-                    iconSize: 28,
+                    iconSize: 40,
                     style: IconButton.styleFrom(
                       minimumSize: const Size(52, 52),
                       padding: const EdgeInsets.all(12),

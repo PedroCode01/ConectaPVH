@@ -153,4 +153,4 @@ class _ConectaPVHAppState extends State<ConectaPVHApp> {
   }
 }
 
-// COMANDO PARA EXECUTAR PELO SIMULADOR DO GITHUB: r
+// COMANDO PARA EXECUTAR PELO SIMULADOR DO GITHUB: flutter run -d web-server --web-port=8080
